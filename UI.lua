@@ -79,6 +79,7 @@ function UI.New(app)
         self.keybinds[#self.keybinds+1]={keybind=key,
             name=function() return self:ActionName(index) end,
             visible=function() return self:ActionName(index)~="" end,
+            enabled=function() return self:ActionEnabled(index) end,
             callback=function() self:Action(index) end}
     end
     self.keybinds[#self.keybinds+1]={keybind="UI_SHORTCUT_NEGATIVE",name=function()
@@ -102,12 +103,19 @@ end
 function UI:ActionName(i)
     if self.diagnostic then return i==1 and "画像を再確認" or "" end
     local game=self.app.game
-    if game.state=="choosing" then return PBJ.Text(textures[i]) end
     if i==1 then
         if game.state=="invited" then return PBJ.Text("accept") end
         if not game:IsActive() and game.peer then return PBJ.Text("again") end
     end
-    return ""
+    -- The three hands stay on the strip for the whole round so the buttons do
+    -- not disappear between the invitation and the result.
+    return PBJ.Text(textures[i])
+end
+function UI:ActionEnabled(i)
+    if self.diagnostic then return i==1 end
+    local game=self.app.game
+    if game.state=="choosing" then return true end
+    return i==1 and (game.state=="invited" or (not game:IsActive() and game.peer~=nil)) or false
 end
 function UI:Action(i)
     if self.diagnostic then

@@ -6,7 +6,7 @@ local ja = {
     bothTimeLoss="双方が時間切れです。双方とも負けになります。",
     timeLossPending="時間切れで、あなたの負けです。相手の結果を確認しています…",
     noDiagnostic="記録された通信エラーはありません。",
-    title="タムリエルでじゃんけん", subtitle="冒険の合間に、じゃんけんを。", menu="Tamriel de Janken",
+    title="タムリエル de じゃんけん", subtitle="冒険の合間に、じゃんけんを。", menu="Tamriel de Janken",
     rock="グー", paper="パー", scissors="チョキ", hidden="未公開", you="あなた", opponent="対戦相手",
     idle="対人インタラクトメニューからグループの相手を選んでください。", inviting="対戦を申し込みました。相手の承諾を待っています…",
     invited="じゃんけんのお誘いが届きました。承諾すると手を選べます。", choosing="出す手を選んでください。選択後は変更できません。",
